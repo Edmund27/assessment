@@ -1,0 +1,83 @@
+.sidebar {
+    height: 100%;
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    float: left;
+  }
+  
+  .sidebar-header {
+    justify-content: space-between;
+  }
+  
+  .sidebar-header div:last-child {
+    color: #2c73e7;
+  }
+  
+  .sidebar-list {
+    padding-left: 0;
+    width: 100%;
+    margin: 0;
+  }
+  
+  .sidebar-item {
+    width: 100 - 30px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    color: grey;
+    padding: 15px;
+    align-items: center;
+  }
+
+  .sidebar-item-unsaved {
+    width: 100 - 30px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    color: grey;
+    padding: 15px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .sidebar-row, .sidebar-row-unsaved {
+    border-top: 0.5px solid gray;
+    border-bottom: 0.5px solid gray;
+    margin-top: -0.5px;
+    margin-bottom: -0.5px;
+    text-decoration: none;
+  }
+  .sidebar-row:hover, .sidebar-row.active {
+    cursor: pointer;
+    background-color: #f8f9ff;
+    color: #2c73e7;
+    border-right: 2px solid;
+    border-top: 0.5px solid grey
+  }
+  
+  .sidebar-icon {
+    margin-right: 20px
+  }
+  
+  .sidebar-row:hover .sidebar-name, .sidebar-row.active .sidebar-name {
+    color: inherit
+  }
+  
+  .sidebar-name {
+    font-weight: 700;
+    color: rgb(42, 38, 38)
+  }
+  
+  .sidebar-description {
+    font-size: 14px;
+  }
+
+  .add-icon:hover {
+    cursor: pointer
+  }
+
+  .unsaved-row-icon:hover {
+    cursor: pointer;
+    color: #2c73e7
+  }

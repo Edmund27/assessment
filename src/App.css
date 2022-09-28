@@ -1,68 +1,8 @@
 .App {
-  width: 100vw;
-  height: 100vh;
-  background-color: #fbfbfb
-}
-
-.sidebar {
-  height: 100%;
-  width: 300px;
-  background-color: #ffffff;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
-}
-
-.sidebar-header {
-  justify-content: space-between;
-}
-
-.sidebar-header div:last-child {
-  color: #2c73e7;
-}
-
-.sidebar-list {
-  padding-left: 0;
   width: 100%;
-  margin: 0;
-}
-
-.sidebar-item {
-  width: 100 - 30px;
-  height: 40px;
+  height: 100vh;
+  background-color: #fbfbfb;
   display: flex;
-  flex-direction: row;
-  color: grey;
-  padding: 15px;
   align-items: center;
 }
 
-.sidebar-row {
-  border-top: 0.5px solid gray;
-  border-bottom: 0.5px solid gray;
-  margin-top: -0.5px;
-  margin-left: -0.5px;
-}
-
-.sidebar-row:hover {
-  cursor: pointer;
-  background-color: #f8f9ff;
-  color: #2c73e7;
-  border-right: 2px solid;
-  border-top: 0.5px solid grey
-}
-
-.sidebar-icon {
-  margin-right: 20px
-}
-
-.sidebar-row:hover .sidebar-name {
-  color: inherit
-}
-
-.sidebar-name {
-  font-weight: 700;
-  color: rgb(42, 38, 38)
-}
-
-.sidebar-description {
-  font-size: 14px;
-}
