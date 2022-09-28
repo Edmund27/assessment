@@ -1,38 +1,68 @@
 .App {
-  text-align: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: #fbfbfb
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.sidebar {
+  height: 100%;
+  width: 300px;
+  background-color: #ffffff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.sidebar-header {
+  justify-content: space-between;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sidebar-header div:last-child {
+  color: #2c73e7;
+}
+
+.sidebar-list {
+  padding-left: 0;
+  width: 100%;
+  margin: 0;
+}
+
+.sidebar-item {
+  width: 100 - 30px;
+  height: 40px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  color: grey;
+  padding: 15px;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.sidebar-row {
+  border-top: 0.5px solid gray;
+  border-bottom: 0.5px solid gray;
+  margin-top: -0.5px;
+  margin-left: -0.5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.sidebar-row:hover {
+  cursor: pointer;
+  background-color: #f8f9ff;
+  color: #2c73e7;
+  border-right: 2px solid;
+  border-top: 0.5px solid grey
+}
+
+.sidebar-icon {
+  margin-right: 20px
+}
+
+.sidebar-row:hover .sidebar-name {
+  color: inherit
+}
+
+.sidebar-name {
+  font-weight: 700;
+  color: rgb(42, 38, 38)
+}
+
+.sidebar-description {
+  font-size: 14px;
 }
