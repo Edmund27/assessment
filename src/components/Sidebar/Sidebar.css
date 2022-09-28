@@ -4,6 +4,7 @@
     background-color: #ffffff;
     box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
     float: left;
+    overflow: auto
   }
   
   .sidebar-header {
@@ -29,21 +30,10 @@
     padding: 15px;
     align-items: center;
   }
-
-  .sidebar-item-unsaved {
-    width: 100 - 30px;
-    height: 40px;
-    display: flex;
-    flex-direction: row;
-    color: grey;
-    padding: 15px;
-    align-items: center;
-    justify-content: space-between;
-  }
   
-  .sidebar-row, .sidebar-row-unsaved {
-    border-top: 0.5px solid gray;
-    border-bottom: 0.5px solid gray;
+  .sidebar-row {
+    border-top: 0.5px solid rgb(213, 212, 212);
+    border-bottom: 0.5px solid rgb(213, 212, 212);
     margin-top: -0.5px;
     margin-bottom: -0.5px;
     text-decoration: none;
@@ -53,7 +43,7 @@
     background-color: #f8f9ff;
     color: #2c73e7;
     border-right: 2px solid;
-    border-top: 0.5px solid grey
+    border-top: 0.5px solid rgb(213, 212, 212);
   }
   
   .sidebar-icon {
@@ -75,9 +65,4 @@
 
   .add-icon:hover {
     cursor: pointer
-  }
-
-  .unsaved-row-icon:hover {
-    cursor: pointer;
-    color: #2c73e7
   }
