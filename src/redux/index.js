@@ -1,10 +1,4 @@
-import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
-import VideocamIcon from "@mui/icons-material/Videocam";
-import WebOutlinedIcon from "@mui/icons-material/WebOutlined";
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import QuestionMarkOutlinedIcon from "@mui/icons-material/QuestionMarkOutlined";
-import CheckOutlinedIcon from "@mui/icons-material/CheckOutlined";
-import ClearOutlinedIcon from "@mui/icons-material/ClearOutlined";
+import { initialItems } from "./initialItems";
 
 const ADD_ITEM = "ADD_ITEM";
 const UPDATE_ITEM = "UPDATE_ITEM";
@@ -32,16 +26,7 @@ export const removeItem = (item) => {
 };
 
 const initialState = {
-  items: [
-    { id: 1, name: "Label", icon: <InsertPhotoIcon /> },
-    { id: 2, name: "Label", icon: <VideocamIcon /> },
-    {
-      id: 3,
-      name: "Label",
-      icon: <WebOutlinedIcon />,
-      description: "description",
-    },
-  ],
+  items: initialItems,
 };
 
 const reducer = (state = initialState, action) => {
@@ -57,7 +42,7 @@ const reducer = (state = initialState, action) => {
       };
     case REMOVE_ITEM:
       const newItemArr = state.items.filter(
-        (item) => item.id != action.payload
+        (item) => item.id !== parseInt(action.payload)
       );
       return { ...state, items: newItemArr };
     default:

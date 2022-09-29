@@ -19,6 +19,7 @@ function Sidebar() {
       name: "Label",
       icon: <QuestionMarkOutlinedIcon />,
       description: "description",
+      variants: [{ name: "A", imageNames: [] }],
     };
     dispatch(addItem(newItem));
   };
@@ -28,9 +29,8 @@ function Sidebar() {
       const { id, name, icon, description } = value;
       return (
         <Link
-          onClick={() => console.log(itemId, id)}
           className={`sidebar-item sidebar-row ${
-            id == itemId ? "active" : "inactive"
+            id === parseInt(itemId) ? "active" : "inactive"
           }`}
           key={id}
           to={`/${id}`}

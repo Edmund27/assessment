@@ -1,8 +1,7 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, useLocation } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import MessageIcon from "@mui/icons-material/Message";
 import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 import MoreVertOutlinedIcon from "@mui/icons-material/MoreVertOutlined";
@@ -13,14 +12,24 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import "./Content.css";
 import { removeItem, updateItem } from "../../redux";
 import { MenuItem } from "@mui/material";
+import ImageCard from "../ImageCard/ImageCard";
 
 function Content() {
+  const location = useLocation();
   const dispatch = useDispatch();
   const { itemId } = useParams();
-  const item = useSelector((state) => state.items.find((i) => i.id == itemId));
+  const item = useSelector((state) => {
+    return state.items.find((i) => i.id === parseInt(itemId));
+  });
   const [edittedName, setEdittedName] = useState(item?.name || "");
   const [isEditing, setIsEditing] = useState(false);
-  const [activeVariant, setActiveVariant] = useState("A");
+  const [activeVariant, setActiveVariant] = useState(
+    item?.variants?.[0] || undefined
+  );
+
+  useEffect(() => {
+    setActiveVariant(item?.variants?.[0]);
+  }, [location, item]);
 
   const handleEditClick = () => {
     if (isEditing) {
@@ -37,8 +46,27 @@ function Content() {
 
   const toggleVariant = (variant) => {
     if (activeVariant === variant) return;
-    setActiveVariant(variant);
+    setActiveVariant(item.variants.find((v) => v.name === variant));
   };
+
+  const mapVariants = () => {
+    if (!item) return;
+    return item.variants?.map((variant) => {
+      const { name } = variant;
+      return (
+        <button
+          key={name}
+          onClick={() => toggleVariant(name)}
+          className={activeVariant?.name === name ? "active" : "inactive"}
+        >
+          variant {name}
+        </button>
+      );
+    });
+  };
+
+  if (!item) return <div>Please select item from the sidebar</div>;
+  if (!activeVariant) return <div>Loading...</div>;
 
   return (
     <div className="content">
@@ -76,28 +104,18 @@ function Content() {
                     </div>
                   )}
                 </PopupState>
-                {/* <MoreVertOutlinedIcon />
-              <Menu anchorEl={anchorEl} open={open} onClose={handleClose()}>
-                <MenuItem onClick={PopupState.close}>delete</MenuItem>
-              </Menu> */}
               </div>
             </div>
           </li>
-          <li className="content-row content-variants">
-            <button
-              onClick={() => toggleVariant("A")}
-              className={activeVariant === "A" ? "active" : "inactive"}
-            >
-              Variant A
-            </button>
-            <button
-              onClick={() => toggleVariant("B")}
-              className={activeVariant === "B" ? "active" : "inactive"}
-            >
-              Variant B
-            </button>
+          <li className="content-row content-variants">{mapVariants()}</li>
+          <li className="content-row content-display">
+            <div className="image-column">
+              <ImageCard name={activeVariant.imageNames[0]}></ImageCard>
+              <ImageCard name={activeVariant.imageNames[1]}></ImageCard>
+            </div>
+            <ImageCard name={activeVariant.imageNames[2]}></ImageCard>
+            <ImageCard name={activeVariant.imageNames[3]}></ImageCard>
           </li>
-          <li className="content-row content-display"></li>
         </ul>
       )}
     </div>
